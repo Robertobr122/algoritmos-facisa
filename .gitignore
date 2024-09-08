@@ -2,18 +2,20 @@
 /shelf/
 /workspace.xml
 
+/.idea/
+/out/
+/shelf/
+/workspace.xml
 
 *.class
 *.jar
 *.war
 
-out/
 bin/
 target/
 build/
 
 *.iml
-.idea/
 .vscode/
 .project
 .classpath

@@ -2,13 +2,85 @@ import lista.ListaEncadeada;
 import lista.ListaSequencial;
 import java.util.List;
 import models.Livro;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         //testesIniciais();
         //adicionaInicio();
         //removeDoInicio();
         //removePosicao();
-        listaSequencial();
+        myApplication();
+    }
+    public static void myApplication(){
+        ListaSequencial<Livro> listaLivros = new ListaSequencial<>();
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\n--- Menu ---");
+            System.out.println("1. Adicionar livro");
+            System.out.println("2. Listar livros");
+            System.out.println("3. Ordenar livros (BubbleSort)");
+            System.out.println("4. Ordenar livros (QuickSort)");
+            System.out.println("5. Buscar livro por título");
+            System.out.println("6. Sair");
+            System.out.print("Escolha uma opção: ");
+
+            int opcao = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opcao) {
+                case 1:
+                    System.out.print("Digite o título do livro: ");
+                    String titulo = scanner.nextLine();
+                    System.out.print("Digite o autor do livro: ");
+                    String autor = scanner.nextLine();
+                    System.out.print("Digite o ano de publicação do livro: ");
+                    int ano = scanner.nextInt();
+                    scanner.nextLine();
+
+                    Livro novoLivro = new Livro(titulo, autor, ano);
+                    listaLivros.adicionar(novoLivro);
+                    System.out.println("Livro adicionado com sucesso!");
+                    break;
+
+                case 2:
+                    System.out.println("\n--- Lista de Livros ---");
+                    listaLivros.mostrar();
+                    break;
+
+                case 3:
+                    listaLivros.bubbleSort();
+                    System.out.println("Livros ordenados com BubbleSort!");
+                    break;
+
+                case 4:
+                    listaLivros.quickSort();
+                    System.out.println("Livros ordenados com QuickSort!");
+                    break;
+
+                case 5:
+                    System.out.print("Digite o título do livro que deseja buscar: ");
+                    String tituloBusca = scanner.nextLine();
+                    Livro livroEncontrado = listaLivros.buscarPorTitulo(tituloBusca);
+
+                    if (livroEncontrado != null) {
+                        System.out.println("Livro encontrado: " + livroEncontrado);
+                    } else {
+                        System.out.println("Livro não encontrado.");
+                    }
+                    break;
+
+                case 6:
+                    System.out.println("Saindo...");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("Opção inválida! Tente novamente.");
+                    break;
+            }
+        }
     }
     public static void listaSequencial(){
         ListaSequencial<Livro> listaLivros = new ListaSequencial<>();

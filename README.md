@@ -27,19 +27,6 @@ The main goal of the system is to manage a collection of books in a library. The
 4. **User Interaction**:
    - The system interacts with users via a console interface, where they can input commands to add, remove, search for, or display books.
 
-## Project Structure
-
-- `src/`: The source code directory, containing all the classes and logic for the project.
-  - `Main.java`: The entry point of the program where the user can interact with the system.
-  - `Livro.java`: Represents a book in the system, containing information such as title, author, and publication year.
-  - `ArvoreBinaria.java`: Implements the binary search tree structure and methods for managing books in the library.
-
-## How to Run
-
-1. Clone this repository.
-2. Open the project in your preferred Java IDE (e.g., IntelliJ, Eclipse).
-3. Run the `Main.java` class to start the application.
-
 ---
 
 # Sistema de Gerenciamento de Biblioteca - Projeto Universitário
@@ -70,16 +57,3 @@ O objetivo principal do sistema é gerenciar uma coleção de livros em uma bibl
 
 4. **Interação com o Usuário**:
    - O sistema interage com os usuários via uma interface de console, onde eles podem inserir comandos para adicionar, remover, buscar ou exibir livros.
-
-## Estrutura do Projeto
-
-- `src/`: O diretório de código-fonte, contendo todas as classes e lógica do projeto.
-  - `Main.java`: O ponto de entrada do programa, onde o usuário pode interagir com o sistema.
-  - `Livro.java`: Representa um livro no sistema, contendo informações como título, autor e ano de publicação.
-  - `ArvoreBinaria.java`: Implementa a estrutura da árvore binária de busca e métodos para gerenciar livros na biblioteca.
-
-## Como Executar
-
-1. Clone este repositório.
-2. Abra o projeto em sua IDE Java preferida (por exemplo, IntelliJ, Eclipse).
-3. Execute a classe `Main.java` para iniciar a aplicação.

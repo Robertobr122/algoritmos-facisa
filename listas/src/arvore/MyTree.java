@@ -1,52 +1,93 @@
 package arvore;
 
+import models.Livro;
+
 public class MyTree {
-    public Node root = null;
+    private Node root;
 
-    public void insert(int info) {
-        root = insertRec(root, info);
+    public MyTree() {
+        root = null;
     }
 
-    private Node insertRec(Node place, int info) {
-        if (place == null) {
-            place = new Node(info);
-            return place;
-        }
-
-        if (info < place.info) {
-            place.left = insertRec(place.left, info);
-        } else if (info > place.info) {
-            place.right = insertRec(place.right, info);
-        }
-
-        return place;
+    public void inserir(Livro livro) {
+        root = inserirRecursivo(root, livro);
     }
 
-    public void preOrder(Node place) {
-        if (place != null) {
-            System.out.print(" " + place.info);
-            preOrder(place.left);
-            preOrder(place.right);
+    private Node inserirRecursivo(Node node, Livro livro) {
+        if (node == null) {
+            return new Node(livro);
         }
+
+        if (livro.getIsbn() < node.getLivro().getIsbn()) {
+            node.setEsquerda(inserirRecursivo(node.getEsquerda(), livro));
+        } else if (livro.getIsbn() > node.getLivro().getIsbn()) {
+            node.setDireita(inserirRecursivo(node.getDireita(), livro));
+        }
+
+        return node;
     }
 
-    public void inOrder(Node place) {
-        if (place != null) {
-            inOrder(place.left);
-            System.out.print(" " + place.info);
-            inOrder(place.right);
-        }
+    public Livro buscar(int isbn) {
+        return buscarRecursivo(root, isbn);
     }
 
-    public void posOrder(Node place) {
-        if (place != null) {
-            posOrder(place.left);
-            posOrder(place.right);
-            System.out.print(" " + place.info);
+    private Livro buscarRecursivo(Node node, int isbn) {
+        if (node == null || node.getLivro().getIsbn() == isbn) {
+            return (node != null) ? node.getLivro() : null;
+        }
+
+        if (isbn < node.getLivro().getIsbn()) {
+            return buscarRecursivo(node.getEsquerda(), isbn);
+        } else {
+            return buscarRecursivo(node.getDireita(), isbn);
         }
     }
 
-    public Node getRoot() {
-        return root;
+    public void remover(int isbn) {
+        root = removerRecursivo(root, isbn);
+    }
+
+    private Node removerRecursivo(Node node, int isbn) {
+        if (node == null) {
+            return null;
+        }
+
+        if (isbn < node.getLivro().getIsbn()) {
+            node.setEsquerda(removerRecursivo(node.getEsquerda(), isbn));
+        } else if (isbn > node.getLivro().getIsbn()) {
+            node.setDireita(removerRecursivo(node.getDireita(), isbn));
+        } else {
+            if (node.getEsquerda() == null) {
+                return node.getDireita();
+            } else if (node.getDireita() == null) {
+                return node.getEsquerda();
+            }
+
+            node.setLivro(encontrarMinimo(node.getDireita()));
+            node.setDireita(removerRecursivo(node.getDireita(), node.getLivro().getIsbn()));
+        }
+
+        return node;
+    }
+
+    private Livro encontrarMinimo(Node node) {
+        Livro minimo = node.getLivro();
+        while (node.getEsquerda() != null) {
+            minimo = node.getEsquerda().getLivro();
+            node = node.getEsquerda();
+        }
+        return minimo;
+    }
+
+    public void exibirArvore() {
+        exibirArvoreRecursivo(root);
+    }
+
+    private void exibirArvoreRecursivo(Node node) {
+        if (node != null) {
+            exibirArvoreRecursivo(node.getEsquerda());
+            System.out.println("ISBN: " + node.getLivro().getIsbn() + ", Título: " + node.getLivro().getTitulo());
+            exibirArvoreRecursivo(node.getDireita());
+        }
     }
 }

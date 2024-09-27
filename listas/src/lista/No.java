@@ -1,3 +1,4 @@
+/* 
 package lista;
 
 public class No<T> {
@@ -36,3 +37,5 @@ public class No<T> {
         return "No{" + "elemento: " + elemento + ", proximo:" + proximo + '}';
     }
 }
+
+*/

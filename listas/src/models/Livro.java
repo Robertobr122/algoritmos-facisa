@@ -1,15 +1,22 @@
 package models;
 
 public class Livro {
+    private int isbn;
     private String titulo;
     private String autor;
-    private int anoDePublicacao;
 
-
-    public Livro(String titulo, String autor, int anoDePublicacao) {
+    public Livro(int isbn, String titulo, String autor) {
+        this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
-        this.anoDePublicacao = anoDePublicacao;
+    }
+
+    public int getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(int isbn) {
+        this.isbn = isbn;
     }
 
     public String getTitulo() {
@@ -26,22 +33,5 @@ public class Livro {
 
     public void setAutor(String autor) {
         this.autor = autor;
-    }
-
-    public int getAnoDePublicacao() {
-        return anoDePublicacao;
-    }
-
-    public void setAnoDePublicacao(int anoDePublicacao) {
-        this.anoDePublicacao = anoDePublicacao;
-    }
-
-    @Override
-    public String toString() {
-        return "Livro{" +
-                "titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
-                ", anoDePublicacao=" + anoDePublicacao +
-                '}';
     }
 }

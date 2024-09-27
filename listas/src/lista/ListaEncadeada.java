@@ -1,3 +1,4 @@
+/* 
 package lista;
 
 public class ListaEncadeada<T> {
@@ -147,3 +148,4 @@ public class ListaEncadeada<T> {
             return builder.toString();
         }
 }
+*/

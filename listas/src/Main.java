@@ -1,7 +1,9 @@
+import arvore.MyTree;
 import lista.ListaEncadeada;
 import lista.ListaSequencial;
-import java.util.List;
 import models.Livro;
+
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -10,7 +12,25 @@ public class Main {
         //adicionaInicio();
         //removeDoInicio();
         //removePosicao();
-        myApplication();
+        //myApplication();
+        myPersonalTree();
+    }
+    public static void myPersonalTree() {
+        MyTree tree = new MyTree();
+
+        int[] values = {33, 55, 52, 97, 1, 30, 7, 16, 3, 66};
+        for (int value : values) {
+            tree.insert(value);
+        }
+
+        System.out.println("\nPreOrder:");
+        tree.preOrder(tree.getRoot());
+
+        System.out.println("\nIn-Order:");
+        tree.inOrder(tree.getRoot());
+
+        System.out.println("\nPosOrder:");
+        tree.posOrder(tree.getRoot());
     }
     public static void myApplication(){
         ListaSequencial<Livro> listaLivros = new ListaSequencial<>();
